@@ -5,5 +5,6 @@ public class Events : MonoBehaviour
 {
 
     public static Action onTick;
+    public static Action<GameObject> OnInteract;
 
 }

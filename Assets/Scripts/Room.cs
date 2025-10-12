@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private Evidence evidence;
+    private Evidence _evidence;
     [SerializeField] private Room[] adjacentRooms;
     // [SerializeField] private Decoy[] decoys; // Potential add in
     
@@ -15,8 +15,10 @@ public class Room : MonoBehaviour
         // Protect against adding Room as adjacent to itself
         if (adjacentRooms.Any(t => t == this))
         {
-            throw new Exception("Can't add room to itself");
+            throw new Exception("Can't add a Room as adjacent to itself!");
         }
+        
+        _evidence = GetComponentInChildren<Evidence>();
     }
 
     // Update is called once per frame
