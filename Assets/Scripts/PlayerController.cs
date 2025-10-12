@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             var hitObject = hit.collider.gameObject;
-            Debug.Log("Mouse over " + hitObject.name);
+            Debug.Log("Interacted with " + hitObject.name);
             Events.OnInteract?.Invoke(hitObject);
         }
 
