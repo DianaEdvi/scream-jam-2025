@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
         Events.OnInteract += MovePlayerBetweenRooms;
         
         // ========= TEMP ===========
-        _roomHoldingPlayer = GameObject.Find("Room").GetComponent<Room>();
+        _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
 
     }
 
@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
         nextRoom.OnRoomEnter?.Invoke();
         // Assign current room
         _roomHoldingPlayer = nextRoom;
+        Debug.Log(_roomHoldingPlayer.name);
     }
 
     
