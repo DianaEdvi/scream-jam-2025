@@ -20,6 +20,9 @@ public class Door : MonoBehaviour
         
     }
 
+    /**
+     * Returns the room that is behind the current door object
+     */
     public Room GetRoomBehindDoor()
     {
         return roomBehindDoor;

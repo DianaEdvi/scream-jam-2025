@@ -52,8 +52,10 @@ public class PlayerController : MonoBehaviour
             Events.OnMothmanIsFar?.Invoke();
         }
     }
-
-    // Returns a Vector3 that is the mouse position in the world space
+    
+    /**
+     * Returns a Vector3 that is the mouse position in the world space
+     */
     private Vector3 MousePos()
     {
         // Get mouse position in screen coordinates
@@ -64,8 +66,10 @@ public class PlayerController : MonoBehaviour
         
         return mouseWorld;
     }
-
-    // Checks if the player clicks on an interactable object (an object with a collider) 
+    
+    /**
+     * Checks if the player clicks on an interactable object (an object with a collider) 
+     */
     private void CheckForCollision()
     {
         // Send out raycast
@@ -75,19 +79,23 @@ public class PlayerController : MonoBehaviour
         if (hit.collider != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             var hitObject = hit.collider.gameObject;
-            Debug.Log("Interacted with " + hitObject.name);
             Events.OnInteract?.Invoke(hitObject);
+            Debug.Log("Interacted with " + hitObject.name);
         }
     }
 
-    // Sets the light to begin flickering
+    /**
+     * Sets the light to begin flickering
+     */
     private void StartFlickering()
     {
         // If Coroutine is null (inactive), begin it 
         _flickeringCoroutine ??= StartCoroutine(FlickerCoroutine());
     }
-
-    // Stops the light from flickering 
+    
+    /**
+     * Stops the light from flickering
+     */
     private void StopFlickering()
     {
         if (_flickeringCoroutine == null) return;
@@ -98,7 +106,9 @@ public class PlayerController : MonoBehaviour
     }
     
 
-    // Calculates a random amount of time for the light to be on/off and flickers infinitely until Coroutine is stopped 
+    /**
+     * Calculates a random amount of time for the light to be on/off and flickers infinitely until Coroutine is stopped  
+     */
     private IEnumerator FlickerCoroutine()
     {
         while (true)
