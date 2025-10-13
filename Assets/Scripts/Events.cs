@@ -6,5 +6,8 @@ public class Events : MonoBehaviour
 
     public static Action onTick;
     public static Action<GameObject> OnInteract;
+    public static Action OnMothmanIsNear;
+    public static Action OnMothmanIsFar;
+
 
 }
