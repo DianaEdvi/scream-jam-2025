@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,7 +20,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Events.OnInteract += MovePlayerBetweenRooms;
-        Events.onTick += MoveMothmanSearchingPhase;
+        // Events.onTick += MoveMothmanSearchingPhase;
+        Events.onTick += MoveMothmanChasingPhase;
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
@@ -79,6 +82,7 @@ public class GameController : MonoBehaviour
     {
         var roomIndex = Random.Range(0, _roomHoldingMothman.GetAdjacentRooms().Length);
         var nextRoom =  _roomHoldingMothman.GetAdjacentRooms()[roomIndex];
+        Debug.Log("yhh");
 
         if (nextRoom == _roomHoldingPlayer)
         {
@@ -93,7 +97,59 @@ public class GameController : MonoBehaviour
         Debug.Log(_roomHoldingMothman.gameObject.name);
     }
 
-    
+    private void MoveMothmanChasingPhase()
+    {
+        var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
+        foreach (var room in path)
+        {
+            Debug.Log("Mothman is in " + room.name);
+        }
+    }
+
+    /**
+     * Calculates the shortest path between two rooms
+     * Stolen from the internet hehe 
+     */
+    private List<Room> BreadthFirst(Room start, Room goal)
+    {
+        var queue = new Queue<Room>();
+        var visited = new HashSet<Room>();
+        var previous = new Dictionary<Room, Room>();
+        var rand = new System.Random();
+
+        queue.Enqueue(start);
+        visited.Add(start);
+
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+
+            if (current == goal)
+            {
+                // reconstruct path
+                var path = new List<Room>();
+                for (var r = goal; r != null; r = previous.ContainsKey(r) ? previous[r] : null)
+                    path.Insert(0, r);
+                return path;
+            }
+
+            // Shuffle neighbors to randomize BFS traversal
+            var neighbors = current.GetAdjacentRooms().OrderBy(x => rand.Next()).ToList();
+
+            foreach (var neighbor in neighbors)
+            {
+                if (!visited.Contains(neighbor))
+                {
+                    visited.Add(neighbor);
+                    previous[neighbor] = current;
+                    queue.Enqueue(neighbor);
+                }
+            }
+        }
+
+        return null; // no path found        
+    }
+
     // Listener(s) for Interact: 
     // Get the tag of the object.
     // if it is a door
