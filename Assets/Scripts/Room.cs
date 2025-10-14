@@ -6,22 +6,14 @@ using UnityEngine.UIElements;
 
 public class Room : MonoBehaviour
 {
-    private Room[] _adjacentRooms;
     private AudioSource _enterRoomAudioSource;
     public Action OnRoomEnter;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // // Protect against adding Room as adjacent to itself
-        // if (_adjacentRooms.Any(t => t == this))
-        // {
-        //     throw new Exception("Can't add a Room as adjacent to itself!");
-        // }
-
         _enterRoomAudioSource = GetComponent<AudioSource>();
         OnRoomEnter += PlayEnterSound;
-        
     }
 
     private void Update()
@@ -48,6 +40,22 @@ public class Room : MonoBehaviour
             throw new Exception("Enter sound not assigned!");
         }
     }
-    
+
+    /**
+     * Returns an array of adjacent Rooms to the current Room
+     */
+    public Room[] GetAdjacentRooms()
+    {
+        // Scan the inspector for all doors in this Room.
+        var doors = GetComponentsInChildren<Door>(true);
+        
+        // Assign and return an array of adjacent rooms to this room 
+        var adjacentRooms = new Room[doors.Length];
+        for (var i = 0; i < doors.Length; i++)
+        {
+            adjacentRooms[i] = doors[i].GetRoomBehindDoor();
+        }
+        return adjacentRooms;
+    }
     
 }

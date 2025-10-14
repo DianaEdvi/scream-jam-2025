@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -9,13 +11,20 @@ public class GameController : MonoBehaviour
     private Room _roomHoldingPlayer;
     private Room _roomHoldingMothman;
     
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Events.OnInteract += MovePlayerBetweenRooms;
         
-        // ========= TEMP ===========
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
+        _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
+
+        var rooms = _roomHoldingPlayer.GetAdjacentRooms();
+        foreach (var room in rooms)
+        {
+            Debug.Log(room.gameObject.name);
+        }
 
     }
 
@@ -27,6 +36,7 @@ public class GameController : MonoBehaviour
 
     /**
      * Manages the logic for moving the player between the rooms
+     * Subscribed to OnInteract event 
      */
     private void MovePlayerBetweenRooms(GameObject passedDoor)
     {
@@ -52,7 +62,16 @@ public class GameController : MonoBehaviour
         nextRoom.OnRoomEnter?.Invoke();
         // Assign current room
         _roomHoldingPlayer = nextRoom;
-        Debug.Log(_roomHoldingPlayer.name);
+    }
+
+    /**
+     * During the searching phase, mothman moves between adjacent rooms randomly
+     * Subscribed to OnTick event 
+     */
+    private void MoveMothmanSearchingPhase()
+    {
+        // var nextRoom = Random.Range();
+
     }
 
     
