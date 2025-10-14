@@ -8,6 +8,7 @@ public class Events : MonoBehaviour
     public static Action<GameObject> OnInteract;
     public static Action OnMothmanIsNear;
     public static Action OnMothmanIsFar;
+    public static Action OnGameOver;
 
 
 }
