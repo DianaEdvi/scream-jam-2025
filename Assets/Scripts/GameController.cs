@@ -1,6 +1,8 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class GameController : MonoBehaviour
 {
@@ -16,21 +18,26 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Events.OnInteract += MovePlayerBetweenRooms;
+        Events.onTick += MoveMothmanSearchingPhase;
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
 
         var rooms = _roomHoldingPlayer.GetAdjacentRooms();
-        foreach (var room in rooms)
-        {
-            Debug.Log(room.gameObject.name);
-        }
-
+        
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ========== TEMP ===========
+        if (Keyboard.current.tKey.wasPressedThisFrame)
+        {
+            Events.onTick.Invoke();
+        }
+        
+        
         // Endgame: if rooms are equal, gameover
     }
 
@@ -70,8 +77,20 @@ public class GameController : MonoBehaviour
      */
     private void MoveMothmanSearchingPhase()
     {
-        // var nextRoom = Random.Range();
+        var roomIndex = Random.Range(0, _roomHoldingMothman.GetAdjacentRooms().Length);
+        var nextRoom =  _roomHoldingMothman.GetAdjacentRooms()[roomIndex];
 
+        if (nextRoom == _roomHoldingPlayer)
+        {
+            Events.OnMothmanIsNear?.Invoke();
+            return;
+        }
+        
+        Events.OnMothmanIsFar?.Invoke();
+        
+        _roomHoldingMothman = nextRoom;
+        nextRoom.OnRoomEnter?.Invoke();
+        Debug.Log(_roomHoldingMothman.gameObject.name);
     }
 
     
