@@ -15,7 +15,7 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
     private void Start()
     {
-        mapUpPos = new Vector2(5.7f, -2.5f);
+        mapUpPos = new Vector2(5.7f, -3.3f);
         mapDownPos = new Vector2(5.7f, -8);
     }
 
@@ -36,6 +36,7 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
     private IEnumerator mapGoUp()
     {
         mapButton.raycastTarget = false;
+        mapButton.rectTransform.Rotate(0, 0, 180);
 
         float elapsedTime = 0f;
 
@@ -56,6 +57,7 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
     private IEnumerator mapGoDown()
     {
         mapButton.raycastTarget = false;
+        mapButton.rectTransform.Rotate(0, 0, 180);
 
         float elapsedTime = 0f;
 

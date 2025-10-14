@@ -6,6 +6,8 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 {
     [SerializeField] private string evidenceName;
 
+    private EvidenceTracker tracker;
+
     private SpriteRenderer evidenceSprite;
     private Color hoverColor = new Color(0.65f, 0.65f, 0.65f);
     private Color normalColor = new Color(1, 1, 1);
@@ -13,14 +15,20 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     private void Start()
     {
         evidenceSprite = GetComponent<SpriteRenderer>();
+        tracker = GameObject.FindGameObjectWithTag("EvidenceTracker").GetComponent<EvidenceTracker>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //pass evidence name through to collection event, then destroy (logic for moving item to UI and tracking in player manager is handled in event script?)
-        Debug.Log("Collected the " +evidenceName);
-        Events.OnInteract?.Invoke(gameObject);
-        Destroy(gameObject);
+        if (!tracker.getIsHolding())
+        {
+            //pass evidence name through to collection event, then destroy
+            Debug.Log("Collected the " + evidenceName);
+
+            tracker.onPickup(gameObject);
+
+            Destroy(gameObject);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
