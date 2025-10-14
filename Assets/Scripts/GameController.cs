@@ -19,21 +19,26 @@ public class GameController : MonoBehaviour
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Obsolete("Obsolete")]
     void Start()
     {
         _gamePhase = "Searching";
         Debug.Log(_gamePhase);
         
+        // Netflix, Spotify, Disney++
         Events.OnInteract += MovePlayerBetweenRooms;
         Events.onTick += MoveMothmanSearchingPhase;
         Events.onTick += MoveMothmanChasingPhase;
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
-
-        var rooms = _roomHoldingPlayer.GetAdjacentRooms();
         
-        
+        // Make sure every room entry (by player and mothman) triggers a search for mothman 
+        var rooms = FindObjectsOfType<Room>();
+        foreach (var room in rooms)
+        {
+            room.OnRoomEnter += WhereIsMothman;
+        }
     }
 
     // Update is called once per frame
@@ -56,14 +61,11 @@ public class GameController : MonoBehaviour
             _gamePhase = "Chasing";
             Debug.Log(_gamePhase);
         }
-        
-        
-        // Endgame: if rooms are equal, gameover
     }
 
     /**
-     * Manages the logic for moving the player between the rooms
-     * Subscribed to OnInteract event 
+     * Manages the logic for moving the player between the rooms.
+     * Subscribed to OnInteract event.
      */
     private void MovePlayerBetweenRooms(GameObject passedDoor)
     {
@@ -85,39 +87,46 @@ public class GameController : MonoBehaviour
             child.gameObject.SetActive(true);
         }
         
-        // Play audio 
-        nextRoom.OnRoomEnter?.Invoke();
-        // Assign current room
+        // Assign current room and notify the room that it has been entered 
         _roomHoldingPlayer = nextRoom;
+        _roomHoldingPlayer.OnRoomEnter?.Invoke(); 
     }
 
     /**
-     * During the searching phase, mothman moves between adjacent rooms randomly
-     * Subscribed to OnTick event 
+     * During the searching phase, mothman moves between adjacent rooms randomly.
+     * The mothman will never enter the room that the player is in during this phase. 
+     * Subscribed to OnTick event.
      */
     private void MoveMothmanSearchingPhase()
     {
         if  (_gamePhase != "Searching") return;
-        var roomIndex = Random.Range(0, _roomHoldingMothman.GetAdjacentRooms().Length);
-        var nextRoom =  _roomHoldingMothman.GetAdjacentRooms()[roomIndex];
 
-        if (nextRoom == _roomHoldingPlayer)
+        // Choose a random adjacent room and move to it
+        var adjacentRooms = _roomHoldingMothman.GetAdjacentRooms();
+        var roomIndex = Random.Range(0, adjacentRooms.Length);
+        var nextRoom =  adjacentRooms[roomIndex];
+
+        // Prevent mothman from entering room with the player
+        while (nextRoom == _roomHoldingPlayer)
         {
-            Events.OnMothmanIsNear?.Invoke();
-            return;
+            roomIndex = Random.Range(0, adjacentRooms.Length);
+            nextRoom =  adjacentRooms[roomIndex];
+        
+            // Mothman stays in his room if his only path is blocked by the player (prevents infinite loop)
+            if (adjacentRooms.Length != 1) continue;
+            nextRoom = _roomHoldingMothman;
+            break;
         }
         
-        Events.OnMothmanIsFar?.Invoke();
-        
+        // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
         Debug.Log("Searching phase: Mothman is in " + _roomHoldingMothman.gameObject.name);
     }
 
     /**
-     * During the chasing phase, the mothman chooses the shortest path to the player and makes his way over there
-     * When the mothman is in the same room as the player, game over
-     * Subscribed to OnTick event
+     * During the chasing phase, the mothman chooses the shortest path to the player and makes his way over there.
+     * Subscribed to OnTick event.
      */
     private void MoveMothmanChasingPhase()
     {
@@ -126,35 +135,45 @@ public class GameController : MonoBehaviour
         var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
         
         // Get next room 
-        // This code is ugly and needs to be refractored in the morning 
         var nextRoom = path.ElementAtOrDefault(1);
         if (nextRoom == null) return;
         
+        // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
-        
-        nextRoom = path.ElementAtOrDefault(2);
-        if (nextRoom == _roomHoldingPlayer)
-        {
-            Events.OnMothmanIsNear?.Invoke();
-        }
-        else
-        {
-            Events.OnMothmanIsFar?.Invoke();
-        }
-        
-        // If the player is found, game over
-        if (_roomHoldingMothman == _roomHoldingPlayer)
-        {
-            Debug.Log("Player was found in " + _roomHoldingMothman.gameObject.name);
-            Events.OnGameOver?.Invoke();
-            return;
-        }
         Debug.Log("Chasing phase: Mothman is in " + _roomHoldingMothman.gameObject.name);
     }
 
     /**
-     * Calculates the shortest path between two rooms
+     * Checks where the Mothman is in relation to the player.
+     * Subscribed to each Room's OnRoomEnter event
+     */
+    private void WhereIsMothman()
+    {
+        // Calculate the nearest path to player and check if there are no rooms between them
+        var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
+
+        // Check where mothman is and behave accordingly 
+        switch (path.Count)
+        {
+            case 2:
+                Events.OnMothmanIsNear?.Invoke();
+                Debug.Log("Mothman is near");
+                break;
+            case 1:
+                // If the Mothman is in the same room as the player, then tis game over 
+                Events.OnGameOver?.Invoke();
+                Debug.Log("Player was found in " + path.First().gameObject.name);
+                break;
+            default:
+                Events.OnMothmanIsFar?.Invoke();
+                Debug.Log("Mothman is far");
+                break;
+        }
+    }
+
+    /**
+     * Calculates the shortest path between two rooms.
      * Stolen from the internet hehe 
      */
     private List<Room> BreadthFirst(Room start, Room goal)
@@ -197,6 +216,7 @@ public class GameController : MonoBehaviour
         return null; // no path found        
     }
 
+    
     // Listener(s) for Interact: 
     // Get the tag of the object.
     // if it is a door

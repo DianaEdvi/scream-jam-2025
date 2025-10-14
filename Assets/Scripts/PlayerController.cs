@@ -11,9 +11,6 @@ public class PlayerController : MonoBehaviour
     private Light2D _light;
     private Coroutine _flickeringCoroutine;
     
-    // ======== TEMP =========
-    private Keyboard _keyboard;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,9 +20,6 @@ public class PlayerController : MonoBehaviour
 
         Events.OnMothmanIsNear += StartFlickering;
         Events.OnMothmanIsFar += StopFlickering;
-        
-        // ========== TEMP ==========
-        _keyboard = Keyboard.current;
     }
 
     // Update is called once per frame
@@ -37,20 +31,6 @@ public class PlayerController : MonoBehaviour
         
         // Checks if mouse is clicking interactable object and invokes Interact if yes 
         CheckForCollision();
-        
-        
-        // ============== TEMP ================
-
-        // Eventually move Invoke logic to when mothman is deemed far/near 
-        if (_keyboard.spaceKey.wasPressedThisFrame)
-        {
-            Events.OnMothmanIsNear?.Invoke();
-        }
-
-        if (_keyboard.enterKey.wasPressedThisFrame)
-        {
-            Events.OnMothmanIsFar?.Invoke();
-        }
     }
     
     /**
