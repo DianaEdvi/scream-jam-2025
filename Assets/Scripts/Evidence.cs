@@ -2,31 +2,34 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Evidence : MonoBehaviour, IPointerClickHandler
+public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private Image evidenceImage;
+    [SerializeField] private string evidenceName;
+
+    private SpriteRenderer evidenceSprite;
+    private Color hoverColor = new Color(0.65f, 0.65f, 0.65f);
+    private Color normalColor = new Color(1, 1, 1);
 
     private void Start()
     {
-        evidenceImage = GetComponent<Image>();
+        evidenceSprite = GetComponent<SpriteRenderer>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //if not holding evidence, collect evidence and trigger the moth
-
-
-
-        //switch statement to make code reusable for every piece of evidence, just add the images as we go and make sure the names line up.
-        switch (evidenceImage.sprite.name) {
-
-            case "Square":
-                Debug.Log("Collected the square");
-                break;
-
-        }
-
+        //pass evidence name through to collection event, then destroy (logic for moving item to UI and tracking in player manager is handled in event script?)
+        Debug.Log("Collected the " +evidenceName);
+        Events.OnInteract?.Invoke(gameObject);
         Destroy(gameObject);
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        evidenceSprite.color = hoverColor;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        evidenceSprite.color = normalColor;
+    }
 }
