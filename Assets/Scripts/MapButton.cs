@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class MapButton : MonoBehaviour, IPointerEnterHandler
 {
-    [SerializeField] private Image Map;
+    [SerializeField] private GameObject Map;
     [SerializeField] private Image mapButton;
 
     private bool mapUp = false;
 
-    private Vector2 mapUpPos = new Vector2(616, -240);
-    private Vector2 mapDownPos = new Vector2(616, -850);
+    private Vector2 mapUpPos;
+    private Vector2 mapDownPos;
+
+    private void Start()
+    {
+        mapUpPos = new Vector2(5.7f, -2.5f);
+        mapDownPos = new Vector2(5.7f, -8);
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -35,12 +41,12 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
         while (elapsedTime < 0.5f)
         {
-            Map.rectTransform.anchoredPosition = Vector2.Lerp(mapDownPos, mapUpPos, elapsedTime / 0.5f);
+            Map.transform.position = Vector2.Lerp(mapDownPos, mapUpPos, elapsedTime / 0.5f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        Map.rectTransform.anchoredPosition = mapUpPos;
+        Map.transform.position = mapUpPos;
 
         yield return new WaitForSeconds(0.2f);
 
@@ -55,12 +61,12 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
         while (elapsedTime < 0.5f)
         {
-            Map.rectTransform.anchoredPosition = Vector2.Lerp(mapUpPos, mapDownPos, elapsedTime / 0.5f);
+            Map.transform.position = Vector2.Lerp(mapUpPos, mapDownPos, elapsedTime / 0.5f);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        Map.rectTransform.anchoredPosition = mapDownPos;
+        Map.transform.position = mapDownPos;
 
         yield return new WaitForSeconds(0.2f);
 
