@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
 
     /**
      * Manages the logic for moving the player between the rooms
+     * Subscribed to OnInteract event 
      */
     private void MovePlayerBetweenRooms(GameObject passedDoor)
     {
@@ -64,7 +65,8 @@ public class GameController : MonoBehaviour
     }
 
     /**
-     * During the searching phase, mothman moves between adjacent rooms randomly 
+     * During the searching phase, mothman moves between adjacent rooms randomly
+     * Subscribed to OnTick event 
      */
     private void MoveMothmanSearchingPhase()
     {
