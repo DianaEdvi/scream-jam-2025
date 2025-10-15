@@ -12,7 +12,7 @@ public class EvidenceTracker : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            //depositEvidence();
+            depositEvidence();
         }
     }
 
@@ -44,7 +44,7 @@ public class EvidenceTracker : MonoBehaviour
         Events.OnChangeGameState("Searching");
         evidenceRecovered++;
 
-        Debug.Log(evidenceRecovered);
+        Debug.Log("Number of evidence recovered: " + evidenceRecovered);
 
     }
 

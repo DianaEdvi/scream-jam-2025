@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
         Events.OnInteract += MovePlayerBetweenRooms;
         Events.onTick += MoveMothmanSearchingPhase;
         Events.onTick += MoveMothmanChasingPhase;
+        Events.OnChangeGameState += ManageGameState;
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
@@ -49,25 +50,42 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ========== TEMP ===========
-        if (Keyboard.current.tKey.wasPressedThisFrame)
-        {
-            Events.onTick.Invoke();
-        }
+        // // ========== TEMP ===========
+        // if (Keyboard.current.tKey.wasPressedThisFrame)
+        // {
+        //     Events.onTick.Invoke();
+        // }
 
-        if (Keyboard.current.sKey.wasPressedThisFrame)
+        // if (Keyboard.current.sKey.wasPressedThisFrame)
+        // {
+        //     _gamePhase = "Searching";
+        //     _tickManager.Ticks = 0;
+        //     Debug.Log(_gamePhase);
+        // }
+        //
+        // if (Keyboard.current.cKey.wasPressedThisFrame)
+        // {
+        //     _gamePhase = "Chasing";
+        //     _tickManager.Ticks = 0;
+        //     Debug.Log(_gamePhase);
+        // }
+    }
+
+    /**
+     * Updates gamestate based on evidence pickup/deposit
+     * Invoked in EvidenceTracker 
+     */
+    private void ManageGameState(string gamePhase)
+    {
+        if (gamePhase == "Searching")
         {
             _gamePhase = "Searching";
-            _tickManager.Ticks = 0;
-            Debug.Log(_gamePhase);
         }
-
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        else  if (gamePhase == "Chasing")
         {
             _gamePhase = "Chasing";
-            _tickManager.Ticks = 0;
-            Debug.Log(_gamePhase);
         }
+        Debug.Log(_gamePhase);
     }
 
     /**
