@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     private Room _roomHoldingMothman;
     private string[] _gamePhases = { "Searching", "Chasing"};
     private string _gamePhase;
+    private TickManager _tickManager;
+    private EvidenceTracker _evidenceTracker;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,6 +34,9 @@ public class GameController : MonoBehaviour
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
+
+        _tickManager = FindFirstObjectByType<TickManager>();
+        _evidenceTracker = FindFirstObjectByType<EvidenceTracker>();
         
         // Make sure every room entry (by player and mothman) triggers a search for mothman 
         var rooms = FindObjectsOfType<Room>();
@@ -53,12 +58,14 @@ public class GameController : MonoBehaviour
         if (Keyboard.current.sKey.wasPressedThisFrame)
         {
             _gamePhase = "Searching";
+            _tickManager.Ticks = 0;
             Debug.Log(_gamePhase);
         }
 
         if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             _gamePhase = "Chasing";
+            _tickManager.Ticks = 0;
             Debug.Log(_gamePhase);
         }
     }
@@ -101,6 +108,8 @@ public class GameController : MonoBehaviour
     {
         if  (_gamePhase != "Searching") return;
 
+        if (_tickManager.Ticks % 5 != 0) return;
+        
         // Choose a random adjacent room and move to it
         var adjacentRooms = _roomHoldingMothman.GetAdjacentRooms();
         var roomIndex = Random.Range(0, adjacentRooms.Length);
@@ -131,6 +140,9 @@ public class GameController : MonoBehaviour
     private void MoveMothmanChasingPhase()
     {
         if   (_gamePhase != "Chasing") return;
+        
+        if (_tickManager.Ticks % 3 != 0) return;
+
         // Calculate shortest path 
         var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
         
