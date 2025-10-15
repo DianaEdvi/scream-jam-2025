@@ -8,6 +8,12 @@ public class TickManager : MonoBehaviour
 {
     [SerializeField] private int ticks = 0;
 
+    public int Ticks
+    {
+        get => ticks;
+        set => ticks = value;
+    }
+
     private bool nextTick = true;
 
     private void FixedUpdate()

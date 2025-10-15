@@ -12,7 +12,7 @@ public class EvidenceTracker : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            //depositEvidence();
+            depositEvidence();
         }
     }
 
@@ -20,6 +20,7 @@ public class EvidenceTracker : MonoBehaviour
 
         // register slot to avoid picking up others and activate respective evidence slot ui
         isHoldingEvidence = true;
+        Events.OnChangeGameState("Chasing");
 
         for (int i = 0; i < EvidenceSlot.transform.childCount; i++) {
 
@@ -40,9 +41,10 @@ public class EvidenceTracker : MonoBehaviour
 
         lastEvidenceUI.SetActive(false);
         isHoldingEvidence = false;
+        Events.OnChangeGameState("Searching");
         evidenceRecovered++;
 
-        Debug.Log(evidenceRecovered);
+        Debug.Log("Number of evidence recovered: " + evidenceRecovered);
 
     }
 
