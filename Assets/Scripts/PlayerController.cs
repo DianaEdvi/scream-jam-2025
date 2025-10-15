@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
         Events.OnMothmanIsNear += StartFlickering;
         Events.OnMothmanIsFar += StopFlickering;
+        
+        MenuButton.OnMenuButtonFlickering += StartFlickering;
+        MenuButton.OnMenuButtonSteady += StopFlickering;
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         // Get mouse position in screen coordinates
         var mouseScreen = Mouse.current.position.ReadValue();
-
+        
         // Convert screen point to world point
         var mouseWorld = _camera.ScreenToWorldPoint(mouseScreen);
         
@@ -80,9 +83,17 @@ public class PlayerController : MonoBehaviour
     {
         if (_flickeringCoroutine == null) return;
         // If Coroutine is not null (is active), then stop it 
-        StopCoroutine(_flickeringCoroutine);
-        _flickeringCoroutine = null;
-        _light.enabled = true;
+        // Try catch to catch scene transition null ref
+        try
+        {
+            StopCoroutine(_flickeringCoroutine);
+            _flickeringCoroutine = null;
+            _light.enabled = true;
+        }
+        catch (System.Exception)
+        {
+            // Ignore — likely destroyed
+        }        
     }
     
 
