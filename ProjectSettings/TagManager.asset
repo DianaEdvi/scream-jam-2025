@@ -8,6 +8,7 @@ TagManager:
   - EventManager
   - Evidence
   - EvidenceTracker
+  - Rooms
   layers:
   - Default
   - TransparentFX
