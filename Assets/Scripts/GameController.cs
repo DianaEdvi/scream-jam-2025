@@ -99,8 +99,8 @@ public class GameController : MonoBehaviour
         var roomIndex = Random.Range(0, adjacentRooms.Length);
         var nextRoom =  adjacentRooms[roomIndex];
 
-        // Prevent mothman from entering room with the player
-        while (nextRoom == _roomHoldingPlayer)
+        // Prevent mothman from entering room with the player or entrance room
+        while (nextRoom == _roomHoldingPlayer || nextRoom.gameObject.name == "EntranceRoom")
         {
             roomIndex = Random.Range(0, adjacentRooms.Length);
             nextRoom =  adjacentRooms[roomIndex];
@@ -132,6 +132,8 @@ public class GameController : MonoBehaviour
         // Get next room 
         var nextRoom = path.ElementAtOrDefault(1);
         if (nextRoom == null) return;
+        
+        if (nextRoom.gameObject.name == "EntranceRoom") return;
         
         // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
