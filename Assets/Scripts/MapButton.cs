@@ -8,6 +8,8 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
     [SerializeField] private GameObject Map;
     [SerializeField] private Image mapButton;
 
+    private AudioSource mapRustle;
+
     private bool mapUp = false;
 
     private Vector2 mapUpPos;
@@ -15,6 +17,7 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
     private void Start()
     {
+        mapRustle = GetComponent<AudioSource>();
         mapUpPos = new Vector2(5.7f, -3.3f);
         mapDownPos = new Vector2(5.7f, -8);
     }
@@ -35,6 +38,8 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
     private IEnumerator mapGoUp()
     {
+        mapRustle.Play();
+
         mapButton.raycastTarget = false;
         mapButton.rectTransform.Rotate(0, 0, 180);
 
@@ -56,6 +61,8 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
 
     private IEnumerator mapGoDown()
     {
+        mapRustle.Play();
+
         mapButton.raycastTarget = false;
         mapButton.rectTransform.Rotate(0, 0, 180);
 
