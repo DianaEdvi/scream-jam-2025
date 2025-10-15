@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
 
     private Room _roomHoldingPlayer;
     private Room _roomHoldingMothman;
-    private string[] _gamePhases = { "Searching", "Chasing"};
     private string _gamePhase;
     private TickManager _tickManager;
     private EvidenceTracker _evidenceTracker;
@@ -25,7 +24,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         _gamePhase = "Searching";
-        Debug.Log(_gamePhase);
         
         // Netflix, Spotify, Disney++
         Events.OnInteract += MovePlayerBetweenRooms;
@@ -46,46 +44,14 @@ public class GameController : MonoBehaviour
             room.OnRoomEnter += WhereIsMothman;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // // ========== TEMP ===========
-        // if (Keyboard.current.tKey.wasPressedThisFrame)
-        // {
-        //     Events.onTick.Invoke();
-        // }
-
-        // if (Keyboard.current.sKey.wasPressedThisFrame)
-        // {
-        //     _gamePhase = "Searching";
-        //     _tickManager.Ticks = 0;
-        //     Debug.Log(_gamePhase);
-        // }
-        //
-        // if (Keyboard.current.cKey.wasPressedThisFrame)
-        // {
-        //     _gamePhase = "Chasing";
-        //     _tickManager.Ticks = 0;
-        //     Debug.Log(_gamePhase);
-        // }
-    }
-
+    
     /**
      * Updates gamestate based on evidence pickup/deposit
      * Invoked in EvidenceTracker 
      */
     private void ManageGameState(string gamePhase)
     {
-        if (gamePhase == "Searching")
-        {
-            _gamePhase = "Searching";
-        }
-        else  if (gamePhase == "Chasing")
-        {
-            _gamePhase = "Chasing";
-        }
-        Debug.Log(_gamePhase);
+        _gamePhase = gamePhase == "Searching" ? "Searching" : "Chasing";
     }
 
     /**
@@ -148,7 +114,6 @@ public class GameController : MonoBehaviour
         // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
-        Debug.Log("Searching phase: Mothman is in " + _roomHoldingMothman.gameObject.name);
     }
 
     /**
@@ -171,7 +136,6 @@ public class GameController : MonoBehaviour
         // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
-        Debug.Log("Chasing phase: Mothman is in " + _roomHoldingMothman.gameObject.name);
     }
 
     /**
