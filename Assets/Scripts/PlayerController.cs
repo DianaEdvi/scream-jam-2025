@@ -73,7 +73,15 @@ public class PlayerController : MonoBehaviour
     private void StartFlickering()
     {
         // If Coroutine is null (inactive), begin it 
-        _flickeringCoroutine ??= StartCoroutine(FlickerCoroutine());
+        try
+        {   
+            _flickeringCoroutine ??= StartCoroutine(FlickerCoroutine());
+
+        }
+        catch (Exception e)
+        {
+            // Ignore — likely destroyed
+        }
     }
     
     /**
@@ -92,7 +100,7 @@ public class PlayerController : MonoBehaviour
         }
         catch (System.Exception)
         {
-            // Ignore — likely destroyed
+            // Ignore 
         }        
     }
     
