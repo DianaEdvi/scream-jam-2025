@@ -212,7 +212,10 @@ public class GameController : MonoBehaviour
         return null; // no path found        
     }
 
-    
+    public Room getRoomHoldingPlayer() {
+        return _roomHoldingPlayer;
+    }
+
     // Listener(s) for Interact: 
     // Get the tag of the object.
     // if it is a door
