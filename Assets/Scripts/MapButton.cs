@@ -18,8 +18,8 @@ public class MapButton : MonoBehaviour, IPointerEnterHandler
     private void Start()
     {
         mapRustle = GetComponent<AudioSource>();
-        mapUpPos = new Vector2(5.7f, -3.3f);
-        mapDownPos = new Vector2(5.7f, -8);
+        mapUpPos = new Vector2(4.65f, -2.9f);
+        mapDownPos = new Vector2(4.65f, -8);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
