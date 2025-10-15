@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a8cad94921b8a0640b842a04570a7c29
+guid: 003bbb1edf078974287741326ad01bb6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7357367060705239270
-    second: Main_Hallway_0
+      213: 8718759708376711861
+    second: Main_Entrance_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 105
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Main_Hallway_0
+      name: Main_Entrance_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e0ee775c5e9a1660800000000000000
-      internalID: 7357367060705239270
+      spriteID: 5b248c3c2c14ff870800000000000000
+      internalID: 8718759708376711861
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Main_Hallway_0: 7357367060705239270
+      Main_Entrance_0: 8718759708376711861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

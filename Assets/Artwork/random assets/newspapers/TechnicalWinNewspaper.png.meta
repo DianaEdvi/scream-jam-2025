@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 765d3a083b5f6f0418eb67bf3a2a09a5
+guid: 8df0c7525fd2eb94eaf201b9713b50a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7462096975179884702
-    second: East_Hallway_2_0
+      213: 8270382330579459581
+    second: TechnicalWinNewspaper_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: East_Hallway_2_0
+      name: TechnicalWinNewspaper_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 56
         y: 0
-        width: 1920
-        height: 1080
+        width: 870
+        height: 540
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e982d1db9a1be8760800000000000000
-      internalID: 7462096975179884702
+      spriteID: dfd1bda49ec46c270800000000000000
+      internalID: 8270382330579459581
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      East_Hallway_2_0: 7462096975179884702
+      TechnicalWinNewspaper_0: 8270382330579459581
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

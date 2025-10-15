@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 765d3a083b5f6f0418eb67bf3a2a09a5
+guid: 3773ea1235802cf4ea6339d3060889d7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7462096975179884702
-    second: East_Hallway_2_0
+      213: -8725599292690177641
+    second: West_Hallway_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 105
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: East_Hallway_2_0
+      name: West_Hallway_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e982d1db9a1be8760800000000000000
-      internalID: 7462096975179884702
+      spriteID: 7916dca6ca178e680800000000000000
+      internalID: -8725599292690177641
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      East_Hallway_2_0: 7462096975179884702
+      West_Hallway_0: -8725599292690177641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
