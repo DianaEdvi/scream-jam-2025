@@ -9,6 +9,7 @@ TagManager:
   - Evidence
   - EvidenceTracker
   - Rooms
+  - Page
   layers:
   - Default
   - TransparentFX
