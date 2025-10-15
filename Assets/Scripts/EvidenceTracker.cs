@@ -7,13 +7,12 @@ public class EvidenceTracker : MonoBehaviour
 
     [SerializeField] private GameObject EvidenceSlot;
 
-    private string lastHeldEvidence = "";
     private GameObject lastEvidenceUI;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            depositEvidence();
+            //depositEvidence();
         }
     }
 
@@ -24,12 +23,15 @@ public class EvidenceTracker : MonoBehaviour
 
         for (int i = 0; i < EvidenceSlot.transform.childCount; i++) {
 
-            if (EvidenceSlot.transform.GetChild(i).name == e.name) {
+            if (EvidenceSlot.transform.GetChild(i).name == e.name)
+            {
 
-                lastHeldEvidence = e.name;
-                lastEvidenceUI = EvidenceSlot.transform.GetChild(i).gameObject;
                 EvidenceSlot.transform.GetChild(i).gameObject.SetActive(true);
+                lastEvidenceUI = EvidenceSlot.transform.GetChild(i).gameObject;
 
+            }
+            else {
+                Debug.Log("Did not find");
             }
         }
     }
