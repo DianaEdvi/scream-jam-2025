@@ -800,7 +800,7 @@ MonoBehaviour:
   handBookUI: {fileID: 1366171429}
   pages: {fileID: 290379003}
   doorDisabler: {fileID: 2124335885}
-  pickUpSound: {fileID: 0}
+  pickUpSound: {fileID: 1366171431}
 --- !u!61 &49342747
 BoxCollider2D:
   m_ObjectHideFlags: 0
