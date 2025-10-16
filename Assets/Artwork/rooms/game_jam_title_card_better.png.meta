@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 22c586260ab008c4d9548cb5d5e8066d
+guid: 4ce8a5ce33da83a42bc0144163413691
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8665383278908973581
-    second: game jam title card_0
+      213: 2139142828996472154
+    second: game_jam_title_card_better_0
   - first:
-      213: -8023835705888274134
-    second: game jam title card_1
+      213: 8249519698094868
+    second: game_jam_title_card_better_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -99,24 +99,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: game jam title card_0
+      name: game_jam_title_card_better_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3fd550aa1df5eb780800000000000000
-      internalID: -8665383278908973581
+      spriteID: a5da82eb113cfad10800000000000000
+      internalID: 2139142828996472154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: game jam title card_1
+      name: game_jam_title_card_better_1
       rect:
         serializedVersion: 2
         x: 632
@@ -153,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a290f6600fb95a090800000000000000
-      internalID: -8023835705888274134
+      spriteID: 41b2c2bf4ee4d1000800000000000000
+      internalID: 8249519698094868
       vertices: []
       indices: 
       edges: []
@@ -163,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 83ff8a19cc033bd4b95c2d24e9086e03
+    spriteID: 86ad599f5d6937b41818c600e221d1ed
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      game jam title card_0: -8665383278908973581
-      game jam title card_1: -8023835705888274134
+      game_jam_title_card_better_0: 2139142828996472154
+      game_jam_title_card_better_1: 8249519698094868
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
