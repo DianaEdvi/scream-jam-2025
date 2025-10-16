@@ -73,6 +73,7 @@ public class GameController : MonoBehaviour
         {
 
             roomFader.fadeOut();
+            roomFader.playFootsteps();
 
             yield return new WaitForSeconds(2.6f);
 

@@ -5,11 +5,17 @@ public class RoomFade : MonoBehaviour
 {
     private CanvasGroup canv;
     private DoorDisabler doorkiller;
+    private AudioSource footstepsSound;
 
     private void Start()
     {
         canv = GetComponent<CanvasGroup>();
         doorkiller = GameObject.Find("DoorDisabler").GetComponent<DoorDisabler>();
+        footstepsSound = GetComponent<AudioSource>();
+    }
+
+    public void playFootsteps() {
+        footstepsSound.Play();
     }
 
     public void fadeOut() {
