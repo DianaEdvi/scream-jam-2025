@@ -199,7 +199,7 @@ public class GameController : MonoBehaviour
                 Debug.Log("Mothman is far");
                 if (roomAudio != null)
                 {
-                    roomAudio.volume = 0.5f;
+                    roomAudio.volume = 0.2f;
                 }
                 break;
         }
