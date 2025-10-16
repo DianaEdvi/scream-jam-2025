@@ -11429,7 +11429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EvidenceTracker
   EvidenceSlot: {fileID: 716975797}
   evidenceNoise: {fileID: 1176435050}
-  mothmanNoise: {fileID: 0}
+  mothmanNoise: {fileID: 1176435051}
 --- !u!4 &1176435049
 Transform:
   m_ObjectHideFlags: 0
@@ -21948,6 +21948,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   LeaveMenu: {fileID: 811536863}
   disabler: {fileID: 2124335885}
+  ender: {fileID: 1501576187}
 --- !u!61 &1972442309
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
@@ -15,6 +16,7 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void leaveMansion() {
         fadeEffect.fadeOut();
+        StartCoroutine(LeaveMansionEndScreen());
     }
 
     public void stayMansion() {
@@ -41,5 +43,12 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         LeaveMenu.SetActive(true);
         disabler.disableDoors();
+    }
+
+    private IEnumerator LeaveMansionEndScreen() {
+
+        yield return new WaitForSeconds(2);
+        ender.goToEndScreen(false);
+
     }
 }
