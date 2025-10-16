@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 50f695af3e37f3e43a59aadc3d89c080
+guid: 0831a94b66aea9e4bb6f6e573ca1620b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3799586572014433613
-    second: Library door to bedroom_0
+      213: 6965290068956664823
+    second: fixed_mansion_map_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Library door to bedroom_0
+      name: fixed_mansion_map_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 2
-        width: 70
-        height: 141
+        y: 0
+        width: 1920
+        height: 1080
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d45b34e2bd7dab430800000000000000
-      internalID: 3799586572014433613
+      spriteID: 7f3d7bdf96ea9a060800000000000000
+      internalID: 6965290068956664823
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bc3cd95ce193df947a152a08d5fe388b
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Library door to bedroom_0: 3799586572014433613
+      fixed_mansion_map_0: 6965290068956664823
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
