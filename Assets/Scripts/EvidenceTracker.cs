@@ -7,9 +7,18 @@ public class EvidenceTracker : MonoBehaviour
 
     [SerializeField] private GameObject EvidenceSlot;
 
+    private AudioSource evidenceNoise;
+
     private GameObject lastEvidenceUI;
 
+    private void Start()
+    {
+        evidenceNoise = GetComponent<AudioSource>();
+    }
+
     public void onPickup(GameObject e) {
+
+        evidenceNoise.Play();
 
         // register slot to avoid picking up others and activate respective evidence slot ui
         isHoldingEvidence = true;
@@ -32,6 +41,7 @@ public class EvidenceTracker : MonoBehaviour
 
     public void depositEvidence() {
 
+        evidenceNoise.Play();
         lastEvidenceUI.SetActive(false); // null ref
         isHoldingEvidence = false;
         Events.OnChangeGameState("Searching");

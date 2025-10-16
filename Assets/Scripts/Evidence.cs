@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private string evidenceName;
+
+    [SerializeField]private GameObject denialText;
 
     private EvidenceTracker tracker;
 
@@ -16,6 +19,7 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         evidenceSprite = GetComponent<SpriteRenderer>();
         tracker = GameObject.FindGameObjectWithTag("EvidenceTracker").GetComponent<EvidenceTracker>();
+        denialText = GameObject.FindGameObjectWithTag("DenialText");
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -29,6 +33,19 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
 
             Destroy(gameObject);
         }
+        else {
+            StartCoroutine(EvidenceDenied());
+        }
+    }
+
+    private IEnumerator EvidenceDenied() {
+
+        denialText.transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2);
+
+        denialText.transform.GetChild(0).gameObject.SetActive(false);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
