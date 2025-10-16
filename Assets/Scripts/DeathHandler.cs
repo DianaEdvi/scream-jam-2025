@@ -75,4 +75,10 @@ public class DeathHandler : MonoBehaviour
         endScreenHandler.goToEndScreen(true);
 
     }
+    
+    private void OnDestroy()
+    {
+        Events.OnGameOver -= ActivateKillScreen;
+    }
+
 }

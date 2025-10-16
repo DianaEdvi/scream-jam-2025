@@ -62,7 +62,6 @@ public class GameController : MonoBehaviour
      */
 
     private void MovePlayerWithTransition(GameObject passedDoor) {
-
         StartCoroutine(TransitionPlayerCoroutine(passedDoor));
 
     }
@@ -252,6 +251,21 @@ public class GameController : MonoBehaviour
     public Room getRoomHoldingPlayer() {
         return _roomHoldingPlayer;
     }
+    
+    private void OnDestroy()
+    {
+        Events.OnInteract -= MovePlayerWithTransition;
+        Events.onTick -= MoveMothmanSearchingPhase;
+        Events.onTick -= MoveMothmanChasingPhase;
+        Events.OnChangeGameState -= ManageGameState;
+
+        var rooms = FindObjectsOfType<Room>();
+        foreach (var room in rooms)
+        {
+            room.OnRoomEnter -= WhereIsMothman;
+        }
+    }
+
 
     // Listener(s) for Interact: 
     // Get the tag of the object.
