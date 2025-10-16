@@ -176,6 +176,7 @@ public class GameController : MonoBehaviour
     {
         // Calculate the nearest path to player and check if there are no rooms between them
         var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
+        var roomAudio = _roomHoldingMothman.GetComponent<AudioSource>();
 
         // Check where mothman is and behave accordingly 
         switch (path.Count)
@@ -183,6 +184,10 @@ public class GameController : MonoBehaviour
             case 2:
                 Events.OnMothmanIsNear?.Invoke();
                 Debug.Log("Mothman is near");
+                if (roomAudio != null)
+                {
+                    roomAudio.volume = 1f;
+                }
                 break;
             case 1:
                 // If the Mothman is in the same room as the player, then tis game over 
@@ -192,6 +197,10 @@ public class GameController : MonoBehaviour
             default:
                 Events.OnMothmanIsFar?.Invoke();
                 Debug.Log("Mothman is far");
+                if (roomAudio != null)
+                {
+                    roomAudio.volume = 0.5f;
+                }
                 break;
         }
     }
