@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
-    [SerializeField] private Animator deathScreen;
-    [SerializeField] private Animator earlyExitScreen;
-    [SerializeField] private Animator technicalWinScreen;
-    [SerializeField] private Animator allEvidenceScreen;
+    [SerializeField] private GameObject blackBackground;
+    [SerializeField] private GameObject deathScreen;
+    [SerializeField] private GameObject earlyExitScreen;
+    [SerializeField] private GameObject technicalWinScreen;
+    [SerializeField] private GameObject allEvidenceScreen;
 
     private EvidenceTracker evidenceTracker;
 
@@ -18,7 +19,8 @@ public class EndScreen : MonoBehaviour
 
         if (wasKilled)
         {
-
+            blackBackground.SetActive(true);
+            deathScreen.SetActive(true);
         }
         else { 
             

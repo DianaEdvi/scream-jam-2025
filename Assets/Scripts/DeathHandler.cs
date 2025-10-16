@@ -12,11 +12,13 @@ public class DeathHandler : MonoBehaviour
     [SerializeField] private GameObject darkScreen;
     private CanvasGroup canv;
 
+    private EndScreen endScreenHandler;
     private KillscreenShake shaker;
 
     private void Start()
     {
         canv = darkScreen.GetComponent<CanvasGroup>();
+        endScreenHandler = GameObject.Find("EndingScreen").GetComponent<EndScreen>();
         Events.OnGameOver += ActivateKillScreen;
     }
 
@@ -67,6 +69,10 @@ public class DeathHandler : MonoBehaviour
 
             yield return null;
         }
+
+        yield return new WaitForSeconds(2);
+
+        endScreenHandler.goToEndScreen(true);
 
     }
 }
