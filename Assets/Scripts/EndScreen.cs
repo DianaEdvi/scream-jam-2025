@@ -6,7 +6,7 @@ public class EndScreen : MonoBehaviour
         
         //if killed, display the thing
 
-
+        //
 
     }
 }
