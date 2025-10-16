@@ -51,4 +51,8 @@ public class EvidenceTracker : MonoBehaviour
     public bool getIsHolding() {
         return isHoldingEvidence;
     }
+
+    public int getRecovered() {
+        return evidenceRecovered;
+    }
 }

@@ -22,10 +22,24 @@ public class EndScreen : MonoBehaviour
             blackBackground.SetActive(true);
             deathScreen.SetActive(true);
         }
-        else { 
-            
-            
+        else {
 
+            if (evidenceTracker.getRecovered() <= 3) {
+
+                blackBackground.SetActive(true);
+                earlyExitScreen.SetActive(true);
+
+            } else if (evidenceTracker.getRecovered() <= 9 && evidenceTracker.getRecovered() > 3) {
+
+                blackBackground.SetActive(true);
+                technicalWinScreen.SetActive(true);
+
+            } else if (evidenceTracker.getRecovered() == 10) {
+
+                blackBackground.SetActive(true);
+                allEvidenceScreen.SetActive(true);
+
+            }
         }
     }
 }

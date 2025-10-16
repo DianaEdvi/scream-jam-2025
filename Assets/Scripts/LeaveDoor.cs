@@ -5,6 +5,7 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     [SerializeField] private GameObject LeaveMenu;
     [SerializeField] private DoorDisabler disabler;
+    [SerializeField] private EndScreen ender;
     private RoomFade fadeEffect;
 
     private Color hoverColor = new Color(0.65f, 0.65f, 0.65f);
