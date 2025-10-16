@@ -5,7 +5,7 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 {
     [SerializeField] private GameObject LeaveMenu;
     [SerializeField] private DoorDisabler disabler;
-
+    private RoomFade fadeEffect;
 
     private Color hoverColor = new Color(0.65f, 0.65f, 0.65f);
     private Color normalColor = new Color(1, 1, 1);
@@ -13,7 +13,7 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private SpriteRenderer doorSprite;
 
     public void leaveMansion() {
-        Events.OnGameOver?.Invoke();
+        fadeEffect.fadeOut();
     }
 
     public void stayMansion() {
@@ -23,7 +23,8 @@ public class LeaveDoor : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private void Start()
     {
-        doorSprite = gameObject.GetComponent<SpriteRenderer>();        
+        doorSprite = gameObject.GetComponent<SpriteRenderer>();
+        fadeEffect = GameObject.Find("RoomTransition").GetComponent<RoomFade>();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {

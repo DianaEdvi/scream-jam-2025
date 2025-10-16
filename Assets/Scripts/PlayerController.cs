@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
         Events.OnMothmanIsNear += StartFlickering;
         Events.OnMothmanIsFar += StopFlickering;
+        Events.OnGameOver += killLight;
         
         MenuButton.OnMenuButtonFlickering += StartFlickering;
         MenuButton.OnMenuButtonSteady += StopFlickering;
@@ -65,6 +66,13 @@ public class PlayerController : MonoBehaviour
             // Debug.Log("Interacted with " + hitObject.name);
             Events.OnInteract?.Invoke(hitObject);
         }
+    }
+
+    /**
+     * Kills the light
+     */
+    private void killLight() {
+        _light.intensity = 0;
     }
 
     /**

@@ -8,12 +8,15 @@ public class Room : MonoBehaviour
 {
     private AudioSource _enterRoomAudioSource;
     public Action OnRoomEnter;
+    public Action OnRoomPlaySound;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _enterRoomAudioSource = GetComponent<AudioSource>();
-        OnRoomEnter += PlayEnterSound;
+        //OnRoomEnter += PlayEnterSound; 
+
+        OnRoomPlaySound += PlayEnterSound;
     }
 
     private void Update()

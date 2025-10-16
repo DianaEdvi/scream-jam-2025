@@ -139,6 +139,7 @@ public class GameController : MonoBehaviour
         // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
+        _roomHoldingMothman.OnRoomPlaySound?.Invoke();
     }
 
     /**
@@ -163,6 +164,7 @@ public class GameController : MonoBehaviour
         // Move mothman to the next room 
         _roomHoldingMothman = nextRoom;
         _roomHoldingMothman.OnRoomEnter?.Invoke();
+        _roomHoldingMothman.OnRoomPlaySound?.Invoke();
     }
 
     /**
