@@ -9,13 +9,6 @@ public class EvidenceTracker : MonoBehaviour
 
     private GameObject lastEvidenceUI;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            // depositEvidence();
-        }
-    }
-
     public void onPickup(GameObject e) {
 
         // register slot to avoid picking up others and activate respective evidence slot ui
@@ -37,7 +30,7 @@ public class EvidenceTracker : MonoBehaviour
         }
     }
 
-    private void depositEvidence() {
+    public void depositEvidence() {
 
         lastEvidenceUI.SetActive(false); // null ref
         isHoldingEvidence = false;
