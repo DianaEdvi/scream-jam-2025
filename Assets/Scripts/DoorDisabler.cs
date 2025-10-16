@@ -14,9 +14,8 @@ public class DoorDisabler : MonoBehaviour
 
         foreach (Door door in doors) {
             if (door.tag == "Door") {
-                door.gameObject.SetActive(false);
+                door.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
-
         }
     }
 
@@ -30,7 +29,7 @@ public class DoorDisabler : MonoBehaviour
         {
             if (door.tag == "Door")
             {
-                door.gameObject.SetActive(true);
+                door.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
 
         }

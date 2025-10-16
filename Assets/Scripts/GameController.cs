@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
+using System.Collections;
 
 public class GameController : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class GameController : MonoBehaviour
     private string _gamePhase;
     private TickManager _tickManager;
     private EvidenceTracker _evidenceTracker;
-    
+    private RoomFade roomFader;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [Obsolete("Obsolete")]
@@ -26,13 +27,14 @@ public class GameController : MonoBehaviour
         _gamePhase = "Searching";
         
         // Netflix, Spotify, Disney++
-        Events.OnInteract += MovePlayerBetweenRooms;
+        Events.OnInteract += MovePlayerWithTransition;
         Events.onTick += MoveMothmanSearchingPhase;
         Events.onTick += MoveMothmanChasingPhase;
         Events.OnChangeGameState += ManageGameState;
         
         _roomHoldingPlayer = GameObject.Find("EntranceRoom").GetComponent<Room>();
         _roomHoldingMothman = GameObject.Find("ConservatoryRoom").GetComponent<Room>();
+        roomFader = GameObject.Find("RoomTransition").GetComponent<RoomFade>();
 
         _tickManager = FindFirstObjectByType<TickManager>();
         _evidenceTracker = FindFirstObjectByType<EvidenceTracker>();
@@ -58,6 +60,29 @@ public class GameController : MonoBehaviour
      * Manages the logic for moving the player between the rooms.
      * Subscribed to OnInteract event.
      */
+
+    private void MovePlayerWithTransition(GameObject passedDoor) {
+
+        StartCoroutine(TransitionPlayerCoroutine(passedDoor));
+
+    }
+
+    private IEnumerator TransitionPlayerCoroutine(GameObject passedDoor) {
+
+        if (passedDoor.CompareTag("Door"))
+        {
+
+            roomFader.fadeOut();
+
+            yield return new WaitForSeconds(2.6f);
+
+            MovePlayerBetweenRooms(passedDoor);
+
+            roomFader.fadeIn();
+
+        }
+    }
+
     private void MovePlayerBetweenRooms(GameObject passedDoor)
     {
         // If the invoking gameobject is not a door, don't deal 

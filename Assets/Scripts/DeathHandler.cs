@@ -17,16 +17,14 @@ public class DeathHandler : MonoBehaviour
     private void Start()
     {
         canv = darkScreen.GetComponent<CanvasGroup>();
+        Events.OnGameOver += ActivateKillScreen;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.S)) {
-            StartCoroutine(ActivateKillScreen());
-        }
+    private void ActivateKillScreen() {
+        StartCoroutine(ActivateKillScreenCoroutine());
     }
 
-    private IEnumerator ActivateKillScreen() {
+    private IEnumerator ActivateKillScreenCoroutine() {
 
         //Play riser and wait for it to resolve
         Riser.Play();
