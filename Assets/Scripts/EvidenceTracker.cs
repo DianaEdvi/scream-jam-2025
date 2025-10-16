@@ -23,6 +23,7 @@ public class EvidenceTracker : MonoBehaviour
         // register slot to avoid picking up others and activate respective evidence slot ui
         isHoldingEvidence = true;
         Events.OnChangeGameState("Chasing");
+        
 
         for (int i = 0; i < EvidenceSlot.transform.childCount; i++) {
 
