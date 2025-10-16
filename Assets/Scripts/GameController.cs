@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
 
     private IEnumerator TransitionPlayerCoroutine(GameObject passedDoor) {
 
-        if (passedDoor.CompareTag("Door"))
+        if (passedDoor.CompareTag("Door") && passedDoor != null)
         {
 
             roomFader.fadeOut();
