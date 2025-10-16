@@ -915,6 +915,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: text right
       objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1016,6 +1028,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Scared, drowning helpless sheep at, terrifying and crazy gory. Gore
         at chainsaw knife crazed choking helpless. Psycho crazy mental hospital moon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
@@ -3398,6 +3422,18 @@ PrefabInstance:
       propertyPath: m_text
       value: n willow trees, killer dolls are rotten teeth bite, sheep children virus
         nibh, in zombies brains unknown ghost creepy.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
@@ -7987,6 +8023,18 @@ PrefabInstance:
       value: Fallen angel. Occult at alley pushed. Psycho crazy mental hospital moon.
         Occult at alley pushed. Drenched scream scared dark. Killer scourg.
       objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10416,6 +10464,18 @@ PrefabInstance:
       value: n willow trees, killer dolls are rotten teeth bite, sheep children virus
         nibh, in zombies brains unknown ghost creepy.
       objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10879,6 +10939,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Scared, drowning helpless sheep at, terrifying and crazy gory. Gore
         at chainsaw knife crazed choking helpless. Psycho crazy mental hospital moon.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
@@ -12774,6 +12846,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Fallen angel. Occult at alley pushed. Psycho crazy mental hospital moon.
         Occult at alley pushed. Drenched scream scared dark. Killer scourg.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
@@ -15514,6 +15598,18 @@ PrefabInstance:
     - target: {fileID: 2711185027936198280, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Name
       value: text left
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 99f55a8552fbdc946b727fb99f4b715c, type: 2}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133063729027657248, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8538889868090237808, guid: dfd12cd932ce96348b4f30e74e51ff7f, type: 3}
       propertyPath: m_Pivot.x
