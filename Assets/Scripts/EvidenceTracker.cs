@@ -7,14 +7,10 @@ public class EvidenceTracker : MonoBehaviour
 
     [SerializeField] private GameObject EvidenceSlot;
 
-    private AudioSource evidenceNoise;
+    [SerializeField] private AudioSource evidenceNoise;
+    [SerializeField] private AudioSource mothmanNoise;
 
     private GameObject lastEvidenceUI;
-
-    private void Start()
-    {
-        evidenceNoise = GetComponent<AudioSource>();
-    }
 
     public void onPickup(GameObject e) {
 
@@ -23,7 +19,7 @@ public class EvidenceTracker : MonoBehaviour
         // register slot to avoid picking up others and activate respective evidence slot ui
         isHoldingEvidence = true;
         Events.OnChangeGameState("Chasing");
-        
+        mothmanNoise.Play();
 
         for (int i = 0; i < EvidenceSlot.transform.childCount; i++) {
 
