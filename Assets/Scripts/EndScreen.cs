@@ -11,15 +11,19 @@ public class EndScreen : MonoBehaviour
 
     [SerializeField] private GameObject gameManager;
 
+    private AudioSource woosh;
     private EvidenceTracker evidenceTracker;
 
     private void Start()
     {
         evidenceTracker = GameObject.Find("EvidenceTracker").GetComponent<EvidenceTracker>();
         gameManager = GameObject.Find("GameController");
+        woosh = GetComponent<AudioSource>();
     }
 
     public void goToEndScreen(bool wasKilled) {
+
+        woosh.Play();
 
         if (wasKilled)
         {

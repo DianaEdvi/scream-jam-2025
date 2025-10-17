@@ -33,9 +33,6 @@ public class EvidenceTracker : MonoBehaviour
                 lastEvidenceUI = EvidenceSlot.transform.GetChild(i).gameObject;
 
             }
-            else {
-                Debug.Log("Did not find");
-            }
         }
     }
 
@@ -46,9 +43,6 @@ public class EvidenceTracker : MonoBehaviour
         isHoldingEvidence = false;
         Events.OnChangeGameState("Searching");
         evidenceRecovered++;
-
-        Debug.Log("Number of evidence recovered: " + evidenceRecovered);
-
     }
 
     private IEnumerator EvidenceGrabbedText()

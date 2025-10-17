@@ -22,8 +22,6 @@ public class EvidenceTable : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 }
             }
 
-            Debug.Log(evidenceHeld + " deposited");
-
             for (int i = 0; i < transform.childCount; i++) {
 
                 if (transform.GetChild(i).name == evidenceHeld) {

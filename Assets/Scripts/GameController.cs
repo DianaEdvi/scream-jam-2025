@@ -182,7 +182,6 @@ public class GameController : MonoBehaviour
         {
             case 2:
                 Events.OnMothmanIsNear?.Invoke();
-                Debug.Log("Mothman is near");
                 if (roomAudio != null)
                 {
                     roomAudio.volume = 1f;
@@ -191,11 +190,9 @@ public class GameController : MonoBehaviour
             case 1:
                 // If the Mothman is in the same room as the player, then tis game over 
                 Events.OnGameOver?.Invoke();
-                Debug.Log("Player was found in " + path.First().gameObject.name);
                 break;
             default:
                 Events.OnMothmanIsFar?.Invoke();
-                Debug.Log("Mothman is far");
                 if (roomAudio != null)
                 {
                     roomAudio.volume = 0.2f;

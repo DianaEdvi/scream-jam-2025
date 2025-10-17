@@ -28,8 +28,6 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
         {
 
             //pass evidence name through to collection event, then destroy
-            Debug.Log("Collected the " + evidenceName);
-
             tracker.onPickup(gameObject);
 
             Destroy(gameObject);
