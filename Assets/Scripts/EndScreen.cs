@@ -9,11 +9,14 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private GameObject technicalWinScreen;
     [SerializeField] private GameObject allEvidenceScreen;
 
+    [SerializeField] private GameObject gameManager;
+
     private EvidenceTracker evidenceTracker;
 
     private void Start()
     {
         evidenceTracker = GameObject.Find("EvidenceTracker").GetComponent<EvidenceTracker>();
+        gameManager = GameObject.Find("GameController");
     }
 
     public void goToEndScreen(bool wasKilled) {
@@ -25,6 +28,8 @@ public class EndScreen : MonoBehaviour
             deathScreen.SetActive(true);
         }
         else {
+
+            gameManager.SetActive(false);
 
             if (evidenceTracker.getRecovered() <= 3) {
 

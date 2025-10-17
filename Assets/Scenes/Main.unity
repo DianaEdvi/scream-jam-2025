@@ -8425,7 +8425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &508381496
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16046,7 +16046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &906694709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26162,6 +26162,7 @@ MonoBehaviour:
   earlyExitScreen: {fileID: 1905669898}
   technicalWinScreen: {fileID: 344988275}
   allEvidenceScreen: {fileID: 1946659207}
+  gameManager: {fileID: 0}
 --- !u!225 &1501576188
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -30008,7 +30009,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1696423642
 RectTransform:
   m_ObjectHideFlags: 0
