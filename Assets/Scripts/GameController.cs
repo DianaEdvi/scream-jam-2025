@@ -117,7 +117,7 @@ public class GameController : MonoBehaviour
     {
         if  (_gamePhase != "Searching") return;
 
-        if (_tickManager.Ticks % 7 != 0) return;
+        if (_tickManager.Ticks % 6 != 0) return;
         
         // Choose a random adjacent room and move to it
         var adjacentRooms = _roomHoldingMothman.GetAdjacentRooms();
@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
     {
         if   (_gamePhase != "Chasing") return;
         
-        if (_tickManager.Ticks % 7 != 0) return;
+        if (_tickManager.Ticks % 6 != 0) return;
 
         // Calculate shortest path 
         var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
