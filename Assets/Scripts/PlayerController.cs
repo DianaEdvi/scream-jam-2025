@@ -128,4 +128,11 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
         }
     }
+    
+    private void OnDestroy()
+    {
+        Events.OnGameOver -= killLight;
+        Events.OnMothmanIsNear -= StartFlickering;
+        Events.OnMothmanIsFar -= StopFlickering;
+    }
 }

@@ -150,7 +150,7 @@ public class GameController : MonoBehaviour
     {
         if   (_gamePhase != "Chasing") return;
         
-        if (_tickManager.Ticks % 3 != 0) return;
+        if (_tickManager.Ticks % 5 != 0) return;
 
         // Calculate shortest path 
         var path = BreadthFirst(_roomHoldingMothman, _roomHoldingPlayer);
