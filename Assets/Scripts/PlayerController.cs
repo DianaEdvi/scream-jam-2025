@@ -31,10 +31,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         // Move the sprite to that position
         _light.transform.position = new Vector3(MousePos().x, MousePos().y, _light.transform.position.z);
-        
+
         // Checks if mouse is clicking interactable object and invokes Interact if yes 
         CheckForCollision();
     }
