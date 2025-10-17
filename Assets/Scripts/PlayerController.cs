@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         // Get components
-        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        // gameController = GameObject.Find("GameController").GetComponent<GameController>();
         _light = GetComponent<Light2D>();
         _camera = Camera.main;
-
+        
         Events.OnMothmanIsNear += StartFlickering;
         Events.OnMothmanIsFar += StopFlickering;
         Events.OnGameOver += killLight;
@@ -64,12 +64,12 @@ public class PlayerController : MonoBehaviour
         // If ray is hitting a collider and user clicks mouse, then trigger Interact event
         if (hit.collider != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            if (gameController.isActiveAndEnabled)
-            {
+            // if (gameController.isActiveAndEnabled)
+            // {
                 var hitObject = hit.collider.gameObject;
                 // Debug.Log("Interacted with " + hitObject.name);
                 Events.OnInteract?.Invoke(hitObject);
-            }
+            // }
         }
     }
 
