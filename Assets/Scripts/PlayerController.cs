@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     private Camera _camera;
     private Light2D _light;
     private Coroutine _flickeringCoroutine;
-    
+    private GameController gameController;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Get components
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
         _light = GetComponent<Light2D>();
         _camera = Camera.main;
 
@@ -62,9 +64,12 @@ public class PlayerController : MonoBehaviour
         // If ray is hitting a collider and user clicks mouse, then trigger Interact event
         if (hit.collider != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
-            var hitObject = hit.collider.gameObject;
-            // Debug.Log("Interacted with " + hitObject.name);
-            Events.OnInteract?.Invoke(hitObject);
+            if (gameController.isActiveAndEnabled)
+            {
+                var hitObject = hit.collider.gameObject;
+                // Debug.Log("Interacted with " + hitObject.name);
+                Events.OnInteract?.Invoke(hitObject);
+            }
         }
     }
 

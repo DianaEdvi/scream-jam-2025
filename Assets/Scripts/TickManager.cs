@@ -23,8 +23,11 @@ public class TickManager : MonoBehaviour
             Events.onTick?.Invoke();
             ticks++;
             nextTick = false;
-            StartCoroutine(tickBreak());
 
+            if (gameObject.GetComponent<GameController>().isActiveAndEnabled)
+            {
+                StartCoroutine(tickBreak());
+            }
         }
     }
 
