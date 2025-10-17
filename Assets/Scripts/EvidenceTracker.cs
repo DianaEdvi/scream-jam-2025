@@ -8,6 +8,7 @@ public class EvidenceTracker : MonoBehaviour
 
     [SerializeField] private GameObject EvidenceSlot;
     [SerializeField] private GameObject EvidencePickupText;
+    [SerializeField] private GameObject AllEvidenceText;
  
     [SerializeField] private AudioSource evidenceNoise;
     [SerializeField] private AudioSource mothmanNoise;
@@ -43,6 +44,11 @@ public class EvidenceTracker : MonoBehaviour
         isHoldingEvidence = false;
         Events.OnChangeGameState("Searching");
         evidenceRecovered++;
+
+        if (evidenceRecovered == 10)
+        {
+            AllEvidenceText.SetActive(true);
+        }
     }
 
     private IEnumerator EvidenceGrabbedText()
