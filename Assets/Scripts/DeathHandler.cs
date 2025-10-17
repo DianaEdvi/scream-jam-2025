@@ -9,6 +9,8 @@ public class DeathHandler : MonoBehaviour
     [SerializeField] private GameObject killScreen1;
     [SerializeField] private GameObject killScreen2;
 
+    [SerializeField] private GameObject GameManager;
+
     [SerializeField] private GameObject darkScreen;
     private CanvasGroup canv;
 
@@ -24,6 +26,7 @@ public class DeathHandler : MonoBehaviour
 
     private void ActivateKillScreen() {
         StartCoroutine(ActivateKillScreenCoroutine());
+        GameManager.SetActive(false);
     }
 
     private IEnumerator ActivateKillScreenCoroutine() {

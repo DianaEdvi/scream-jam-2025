@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EvidenceTracker : MonoBehaviour
 {
@@ -6,7 +7,8 @@ public class EvidenceTracker : MonoBehaviour
     private bool isHoldingEvidence = false;
 
     [SerializeField] private GameObject EvidenceSlot;
-
+    [SerializeField] private GameObject EvidencePickupText;
+ 
     [SerializeField] private AudioSource evidenceNoise;
     [SerializeField] private AudioSource mothmanNoise;
 
@@ -14,6 +16,7 @@ public class EvidenceTracker : MonoBehaviour
 
     public void onPickup(GameObject e) {
 
+        StartCoroutine(EvidenceGrabbedText());
         evidenceNoise.Play();
 
         // register slot to avoid picking up others and activate respective evidence slot ui
@@ -45,6 +48,17 @@ public class EvidenceTracker : MonoBehaviour
         evidenceRecovered++;
 
         Debug.Log("Number of evidence recovered: " + evidenceRecovered);
+
+    }
+
+    private IEnumerator EvidenceGrabbedText()
+    {
+
+        EvidencePickupText.SetActive(true);
+
+        yield return new WaitForSeconds(3);
+
+        EvidencePickupText.SetActive(false);
 
     }
 

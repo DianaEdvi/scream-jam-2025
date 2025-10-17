@@ -74,7 +74,7 @@ public class GameController : MonoBehaviour
             roomFader.fadeOut();
             roomFader.playFootsteps();
 
-            yield return new WaitForSeconds(2.6f);
+            yield return new WaitForSeconds(1.5f);
 
             MovePlayerBetweenRooms(passedDoor);
 

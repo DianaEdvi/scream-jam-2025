@@ -3,6 +3,7 @@ using UnityEngine;
 public class EndScreen : MonoBehaviour
 {
     [SerializeField] private GameObject blackBackground;
+    [SerializeField] private GameObject hintText;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private GameObject earlyExitScreen;
     [SerializeField] private GameObject technicalWinScreen;
@@ -20,6 +21,7 @@ public class EndScreen : MonoBehaviour
         if (wasKilled)
         {
             blackBackground.SetActive(true);
+            hintText.SetActive(true);
             deathScreen.SetActive(true);
         }
         else {

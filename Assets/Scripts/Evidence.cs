@@ -26,6 +26,7 @@ public class Evidence : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     {
         if (!tracker.getIsHolding())
         {
+
             //pass evidence name through to collection event, then destroy
             Debug.Log("Collected the " + evidenceName);
 
